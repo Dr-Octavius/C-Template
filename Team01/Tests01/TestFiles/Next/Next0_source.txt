@@ -1,0 +1,28 @@
+procedure Test { x = 1;
+    y = 2;
+    while (i != 0) {
+        x = x % 1;
+        read y; }
+    if (t == 0) then {
+        while (y != 0) {
+            y = y + 2;
+            if (y == 1) then {
+                if (x == 0) then {
+                    print y;
+                    while (z == 0) {
+                        x = x + 1; } } else {
+                    call x; } } else {
+               read z;
+               call x;
+               call z;
+               if (y > 0) then {
+                   z = z / 2;
+                   print t;
+                   call z; } else {
+            x = x - 1; } } } } else {
+        y = y + 1;
+        while (y == x) {
+            read t;
+            read x; } } }
+procedure x { x = x + 2; }
+procedure z { z = z + 2; }

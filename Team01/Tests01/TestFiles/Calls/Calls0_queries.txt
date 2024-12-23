@@ -1,0 +1,510 @@
+1 - valid calls - two IDENT, select BOOLEAN
+
+Select BOOLEAN such that Calls("firstProcedure", "secondProcedure")
+TRUE
+5000
+2 - valid calls - two IDENT, select statement
+stmt s;
+Select s such that Calls("thirdProcedure", "fourthProcedure")
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+5000
+3 - valid calls - two IDENT, select procedure
+procedure p;
+Select p such that Calls("fifthProcedure", "fourthProcedure")
+firstProcedure, secondProcedure, thirdProcedure, fourthProcedure, fifthProcedure, notCalled
+5000
+4 - valid calls - two IDENT, select BOOLEAN
+
+Select BOOLEAN such that Calls("firstProcedure", "notCalled")
+FALSE
+5000
+5 - valid calls - two IDENT, select statement
+stmt s;
+Select s such that Calls("firstProcedure", "thirdProcedure")
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+5000
+6 - valid calls - two IDENT, select procedure
+procedure p;
+Select p such that Calls("fourthProcedure", "fifthProcedure")
+none
+5000
+5 - valid calls - two IDENT, procedure does not exist
+stmt s;
+Select s such that Calls("firstProcedure", "doesNotExist")
+none
+5000
+6 - valid calls - two IDENT, procedure does not exist
+procedure p;
+Select p such that Calls("doesNotExist", "fifthProcedure")
+none
+5000
+5 - valid calls - two IDENT, procedure calls itself
+stmt s;
+Select s such that Calls("firstProcedure", "firstProcedure")
+none
+5000
+6 - valid calls - two IDENT, select procedure
+procedure p;
+Select p such that Calls("fifthProcedure", "fifthProcedure")
+none
+5000
+7 - valid calls - one procedure one IDENT, select BOOLEAN
+procedure p;
+Select BOOLEAN such that Calls(p, "secondProcedure")
+TRUE
+5000
+8 - valid calls - one procedure one IDENT, select statement
+stmt s; procedure p;
+Select s such that Calls(p, "fourthProcedure")
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+5000
+9 - valid calls - one procedure one IDENT, select procedure
+procedure p;
+Select p such that Calls(p, "fourthProcedure")
+thirdProcedure, fifthProcedure
+5000
+10 - valid calls - one procedure one IDENT, select tuple
+procedure p; stmt s;
+Select <p> such that Calls(p, "fourthProcedure")
+thirdProcedure, fifthProcedure
+5000
+11 - valid calls - one procedure one IDENT, select tuple
+procedure p; stmt s;
+Select <p, p, p, p, p, p> such that Calls(p, "fourthProcedure")
+thirdProcedure thirdProcedure thirdProcedure thirdProcedure thirdProcedure thirdProcedure, fifthProcedure fifthProcedure fifthProcedure fifthProcedure fifthProcedure fifthProcedure
+5000
+12 - valid calls - one procedure one IDENT, select BOOLEAN
+procedure p;
+Select BOOLEAN such that Calls(p, "notCalled")
+FALSE
+5000
+13 - valid calls - one procedure one IDENT, select statement
+stmt s; procedure p;
+Select s such that Calls(p, "firstProcedure")
+none
+5000
+14 - valid calls - one procedure one IDENT, select procedure
+procedure p;
+Select p such that Calls(p, "fifthProcedure")
+none
+5000
+15 - valid calls - one procedure one IDENT, select tuple
+procedure p;
+Select <p> such that Calls(p, "fifthProcedure")
+none
+5000
+16 - valid calls - one IDENT one procedure, select BOOLEAN
+procedure p;
+Select BOOLEAN such that Calls("firstProcedure", p)
+TRUE
+5000
+17 - valid calls - one IDENT one procedure, select statement
+stmt s; procedure p;
+Select p such that Calls("secondProcedure", p)
+none
+5000
+18 - valid calls - one IDENT one procedure, select procedure
+procedure p;
+Select p such that Calls("firstProcedure", p)
+secondProcedure, thirdProcedure
+5000
+19 - valid calls - one IDENT one procedure, select tuple
+procedure p; stmt s;
+Select <p> such that Calls("firstProcedure", p)
+secondProcedure, thirdProcedure
+5000
+20 - valid calls - one IDENT one procedure, select tuple
+procedure p; stmt s;
+Select <p, p, p, p, p, p> such that Calls("firstProcedure", p)
+secondProcedure secondProcedure secondProcedure secondProcedure secondProcedure secondProcedure,thirdProcedure thirdProcedure thirdProcedure thirdProcedure thirdProcedure thirdProcedure
+5000
+21 - valid calls - one IDENT one procedure, select BOOLEAN
+procedure p;
+Select BOOLEAN such that Calls("notCalled", p)
+FALSE
+5000
+22 - valid calls - one IDENT one procedure, select statement
+stmt s; procedure p;
+Select s such that Calls("fourthProcedure", p)
+none
+5000
+23 - valid calls - one IDENT one procedure, select procedure
+procedure p;
+Select p such that Calls("fourthProcedure", p)
+none
+5000
+24 - valid calls - one _ one procedure, select BOOLEAN
+procedure p;
+Select BOOLEAN such that Calls(_, p)
+TRUE
+5000
+25 - valid calls - one _ one procedure, select procedure
+procedure p;
+Select p such that Calls(_, p)
+secondProcedure, thirdProcedure, fourthProcedure
+5000
+26 - valid calls - one procedure one _, select BOOLEAN
+procedure p;
+Select BOOLEAN such that Calls(p, _)
+TRUE
+5000
+27 - valid calls - one procedure one _, select procedure
+procedure p;
+Select p such that Calls(p, _)
+firstProcedure, thirdProcedure, fifthProcedure
+5000
+28 - valid calls - one _ one IDENT, select BOOLEAN
+
+Select BOOLEAN such that Calls(_, "fourthProcedure")
+TRUE
+5000
+29 - valid calls - one _ one IDENT, select BOOLEAN
+
+Select BOOLEAN such that Calls(_, "firstProcedure")
+FALSE
+5000
+30 - valid calls - one _ one IDENT, select procedure
+procedure p;
+Select p such that Calls(_, "thirdProcedure")
+firstProcedure, secondProcedure, thirdProcedure, fourthProcedure, fifthProcedure, notCalled
+5000
+31 - valid calls - one _ one IDENT, select BOOLEAN
+
+Select BOOLEAN such that Calls("notCalled", _)
+FALSE
+5000
+32 - valid calls - one IDENT one _, select BOOLEAN
+procedure p;
+Select BOOLEAN such that Calls("firstProcedure", _)
+TRUE
+5000
+33 - valid calls - one IDENT one _, select procedure
+procedure p;
+Select p such that Calls("fifthProcedure", _)
+firstProcedure, secondProcedure, thirdProcedure, fourthProcedure, fifthProcedure, notCalled
+5000
+34 - valid calls - two different procedures, select BOOLEAN
+procedure p1, p2;
+Select BOOLEAN such that Calls(p1, p2)
+TRUE
+5000
+35 - valid calls - two different procedures, select statement
+stmt s; procedure p1, p2;
+Select s such that Calls(p1, p2)
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+5000
+36 - valid calls - two different procedures, select procedure
+procedure p1, p2;
+Select p1 such that Calls(p1, p2)
+firstProcedure, thirdProcedure, fifthProcedure
+5000
+37 - valid calls - two different procedures, select procedure
+procedure p1, p2;
+Select p2 such that Calls(p1, p2)
+secondProcedure, thirdProcedure, fourthProcedure
+5000
+38 - valid calls - two different procedures, select tuple
+procedure p1, p2; stmt s;
+Select <p1, p2> such that Calls(p1, p2)
+firstProcedure secondProcedure,firstProcedure thirdProcedure,thirdProcedure fourthProcedure, fifthProcedure fourthProcedure
+5000
+39 - valid calls - two different procedures, select tuple
+procedure p1, p2; stmt s;
+Select <p1, p2, p1, p2, p1, p2> such that Calls(p1, p2)
+firstProcedure secondProcedure firstProcedure secondProcedure firstProcedure secondProcedure,firstProcedure thirdProcedure firstProcedure thirdProcedure firstProcedure thirdProcedure, thirdProcedure fourthProcedure thirdProcedure fourthProcedure thirdProcedure fourthProcedure, fifthProcedure fourthProcedure fifthProcedure fourthProcedure fifthProcedure fourthProcedure
+5000
+40 - valid calls - two same procedures, select BOOLEAN
+procedure p;
+Select BOOLEAN such that Calls(p, p)
+FALSE
+5000
+41 - valid calls - two same procedures, select statement
+stmt s; procedure p;
+Select s such that Calls(p, p)
+none
+5000
+42 - valid calls - two same procedures, select procedure
+procedure p;
+Select p such that Calls(p, p)
+none
+5000
+43 - invalid calls - missing quotes
+
+Select BOOLEAN such that Calls(firstProcedure, secondProcedure)
+SemanticError
+5000
+44 - invalid calls - semantic error
+stmt s; assign a;
+Select s such that Calls("thirdProcedure", a)
+SemanticError
+5000
+45 - invalid calls - semantic error
+stmt s; call c;
+Select s such that Calls("thirdProcedure", c)
+SemanticError
+5000
+46 - invalid calls - semantic error
+stmt s; if i;
+Select s such that Calls("thirdProcedure", i)
+SemanticError
+5000
+47 - invalid calls - semantic error
+stmt s; while w;
+Select s such that Calls("thirdProcedure", w)
+SemanticError
+5000
+48 - invalid calls - semantic error
+stmt s;
+Select s such that Calls("thirdProcedure", 2)
+SyntaxError
+5000
+49 - invalid calls - capitalisation
+procedure p;
+Select p such that calls("fifthProcedure", "fourthProcedure")
+SyntaxError
+5000
+50 - valid Calls* - two IDENT, select BOOLEAN [start of Calls*]
+
+Select BOOLEAN such that Calls*("firstProcedure", "secondProcedure")
+TRUE
+5000
+51 - valid Calls* - two IDENT, select statement
+stmt s;
+Select s such that Calls*("thirdProcedure", "fourthProcedure")
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+5000
+52 - valid Calls* - two IDENT, select procedure
+procedure p;
+Select p such that Calls*("fifthProcedure", "fourthProcedure")
+firstProcedure, secondProcedure, thirdProcedure, fourthProcedure, fifthProcedure, notCalled
+5000
+53 - valid Calls* - two IDENT, select BOOLEAN
+
+Select BOOLEAN such that Calls*("firstProcedure", "notCalled")
+FALSE
+5000
+54 - valid Calls* - two IDENT, select statement
+stmt s;
+Select s such that Calls*("firstProcedure", "thirdProcedure")
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+5000
+55 - valid Calls* - two IDENT, select procedure
+procedure p;
+Select p such that Calls*("fourthProcedure", "fifthProcedure")
+none
+5000
+56 - valid Calls* - one procedure one IDENT, select BOOLEAN
+procedure p;
+Select BOOLEAN such that Calls*(p, "secondProcedure")
+TRUE
+5000
+57 - valid Calls* - one procedure one IDENT, select statement
+stmt s; procedure p;
+Select s such that Calls*(p, "fourthProcedure")
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+5000
+58 - valid Calls* - one procedure one IDENT, select procedure
+procedure p;
+Select p such that Calls*(p, "fourthProcedure")
+firstProcedure, thirdProcedure, fifthProcedure
+5000
+59 - valid Calls* - one procedure one IDENT, select tuple
+procedure p; stmt s;
+Select <p> such that Calls*(p, "fourthProcedure")
+firstProcedure, thirdProcedure, fifthProcedure
+5000
+60 - valid Calls* - one procedure one IDENT, select tuple
+procedure p; stmt s;
+Select <p, p, p, p, p, p> such that Calls*(p, "fourthProcedure")
+firstProcedure firstProcedure firstProcedure firstProcedure firstProcedure firstProcedure, thirdProcedure thirdProcedure thirdProcedure thirdProcedure thirdProcedure thirdProcedure, fifthProcedure fifthProcedure fifthProcedure fifthProcedure fifthProcedure fifthProcedure
+5000
+61 - valid Calls* - one procedure one IDENT, select BOOLEAN
+procedure p;
+Select BOOLEAN such that Calls*(p, "notCalled")
+FALSE
+5000
+62 - valid Calls* - one procedure one IDENT, select statement
+stmt s; procedure p;
+Select s such that Calls*(p, "firstProcedure")
+none
+5000
+63 - valid Calls* - one procedure one IDENT, select procedure
+procedure p;
+Select p such that Calls*(p, "fifthProcedure")
+none
+5000
+64 - valid Calls* - one procedure one IDENT, select tuple
+procedure p;
+Select <p> such that Calls*(p, "fifthProcedure")
+none
+5000
+65 - valid Calls* - one IDENT one procedure, select BOOLEAN
+procedure p;
+Select BOOLEAN such that Calls*("firstProcedure", p)
+TRUE
+5000
+66 - valid Calls* - one IDENT one procedure, select statement
+stmt s; procedure p;
+Select p such that Calls*("secondProcedure", p)
+none
+5000
+67 - valid Calls* - one IDENT one procedure, select procedure
+procedure p;
+Select p such that Calls*("firstProcedure", p)
+secondProcedure, thirdProcedure, fourthProcedure
+5000
+68 - valid Calls* - one IDENT one procedure, select tuple
+procedure p; stmt s;
+Select <p> such that Calls*("firstProcedure", p)
+secondProcedure, thirdProcedure, fourthProcedure
+5000
+69 - valid Calls* - one IDENT one procedure, select tuple
+procedure p; stmt s;
+Select <p, p, p, p, p, p> such that Calls*("firstProcedure", p)
+secondProcedure secondProcedure secondProcedure secondProcedure secondProcedure secondProcedure,thirdProcedure thirdProcedure thirdProcedure thirdProcedure thirdProcedure thirdProcedure, fourthProcedure fourthProcedure fourthProcedure fourthProcedure fourthProcedure fourthProcedure
+5000
+70 - valid Calls* - one IDENT one procedure, select BOOLEAN
+procedure p;
+Select BOOLEAN such that Calls*("notCalled", p)
+FALSE
+5000
+71 - valid Calls* - one IDENT one procedure, select statement
+stmt s; procedure p;
+Select s such that Calls*("fourthProcedure", p)
+none
+5000
+72 - valid Calls* - one IDENT one procedure, select procedure
+procedure p;
+Select p such that Calls*("fourthProcedure", p)
+none
+5000
+73 - valid Calls* - one _ one procedure, select BOOLEAN
+procedure p;
+Select BOOLEAN such that Calls*(_, p)
+TRUE
+5000
+74 - valid Calls* - one _ one procedure, select procedure
+procedure p;
+Select p such that Calls*(_, p)
+secondProcedure, thirdProcedure, fourthProcedure
+5000
+75 - valid Calls* - one procedure one _, select BOOLEAN
+procedure p;
+Select BOOLEAN such that Calls*(p, _)
+TRUE
+5000
+76 - valid Calls* - one procedure one _, select procedure
+procedure p;
+Select p such that Calls*(p, _)
+firstProcedure, thirdProcedure, fifthProcedure
+5000
+77 - valid Calls* - one _ one IDENT, select BOOLEAN
+
+Select BOOLEAN such that Calls*(_, "fourthProcedure")
+TRUE
+5000
+78 - valid Calls* - one _ one IDENT, select BOOLEAN
+
+Select BOOLEAN such that Calls*(_, "firstProcedure")
+FALSE
+5000
+79 - valid Calls* - one _ one IDENT, select procedure
+procedure p;
+Select p such that Calls*(_, "thirdProcedure")
+firstProcedure, secondProcedure, thirdProcedure, fourthProcedure, fifthProcedure, notCalled
+5000
+80 - valid Calls* - one _ one IDENT, select BOOLEAN
+
+Select BOOLEAN such that Calls*("notCalled", _)
+FALSE
+5000
+81 - valid Calls* - one IDENT one _, select BOOLEAN
+procedure p;
+Select BOOLEAN such that Calls*("firstProcedure", _)
+TRUE
+5000
+82 - valid Calls* - one IDENT one _, select procedure
+procedure p;
+Select p such that Calls*("fifthProcedure", _)
+firstProcedure, secondProcedure, thirdProcedure, fourthProcedure, fifthProcedure, notCalled
+5000
+83 - valid Calls* - two different procedures, select BOOLEAN
+procedure p1, p2;
+Select BOOLEAN such that Calls*(p1, p2)
+TRUE
+5000
+84 - valid Calls* - two different procedures, select statement
+stmt s; procedure p1, p2;
+Select s such that Calls*(p1, p2)
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+5000
+85 - valid Calls* - two different procedures, select procedure
+procedure p1, p2;
+Select p1 such that Calls*(p1, p2)
+firstProcedure, thirdProcedure, fifthProcedure
+5000
+86 - valid Calls* - two different procedures, select procedure
+procedure p1, p2;
+Select p2 such that Calls*(p1, p2)
+secondProcedure, thirdProcedure, fourthProcedure
+5000
+87 - valid Calls* - two different procedures, select tuple
+procedure p1, p2; stmt s;
+Select <p1, p2> such that Calls*(p1, p2)
+firstProcedure secondProcedure,firstProcedure thirdProcedure, firstProcedure fourthProcedure, thirdProcedure fourthProcedure, fifthProcedure fourthProcedure
+5000
+88 - valid Calls* - two different procedures, select tuple
+procedure p1, p2; stmt s;
+Select <p1, p2, p1, p2, p1, p2> such that Calls*(p1, p2)
+firstProcedure secondProcedure firstProcedure secondProcedure firstProcedure secondProcedure,firstProcedure thirdProcedure firstProcedure thirdProcedure firstProcedure thirdProcedure, firstProcedure fourthProcedure firstProcedure fourthProcedure firstProcedure fourthProcedure, thirdProcedure fourthProcedure thirdProcedure fourthProcedure thirdProcedure fourthProcedure, fifthProcedure fourthProcedure fifthProcedure fourthProcedure fifthProcedure fourthProcedure
+5000
+89 - valid Calls* - two same procedures, select BOOLEAN
+procedure p;
+Select BOOLEAN such that Calls*(p, p)
+FALSE
+5000
+90 - valid Calls* - two same procedures, select statement
+stmt s; procedure p;
+Select s such that Calls*(p, p)
+none
+5000
+91 - valid Calls* - two same procedures, select procedure
+procedure p;
+Select p such that Calls*(p, p)
+none
+5000
+92 - invalid Calls* - missing quotes
+
+Select BOOLEAN such that Calls*(firstProcedure, secondProcedure)
+SemanticError
+5000
+93 - invalid Calls* - semantic error
+stmt s; assign a;
+Select s such that Calls*("thirdProcedure", a)
+SemanticError
+5000
+94 - invalid Calls* - semantic error
+stmt s; call c;
+Select s such that Calls*("thirdProcedure", c)
+SemanticError
+5000
+95 - invalid Calls* - semantic error
+stmt s; if i;
+Select s such that Calls*("thirdProcedure", i)
+SemanticError
+5000
+96 - invalid Calls* - semantic error
+stmt s; while w;
+Select s such that Calls*("thirdProcedure", w)
+SemanticError
+5000
+97 - invalid Calls* - syntax error
+stmt s;
+Select s such that Calls*("thirdProcedure", 2)
+SyntaxError
+5000
+98 - invalid Calls* - capitalisation
+procedure p;
+Select p such that calls*("fifthProcedure", "fourthProcedure")
+SyntaxError
+5000

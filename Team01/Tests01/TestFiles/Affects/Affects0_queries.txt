@@ -1,0 +1,225 @@
+0 - Affects - Two Statement Synonyms
+stmt s;
+Select s such that Affects(5, s)
+5, 14
+1000
+1 - Affects - Same Statement
+stmt s;
+Select s such that Affects(s, s)
+5, 32
+1000
+2 - Affects - Two Statement Synonyms
+stmt s1, s2;
+Select <s1, s2> such that Affects(s1, s2)
+1 2, 1 5, 1 9, 2 5, 2 14, 5 5, 5 14, 7 11, 10 14, 11 12, 23 24, 32 32
+1000
+3 - Affects - Statement and Print Synonyms
+stmt s; print p;
+Select s such that Affects(s, p)
+SemanticError
+1000
+4 - Affects - Statement and Read Synonyms
+stmt s; read r;
+Select s such that Affects(s, r)
+SemanticError
+1000
+5 - Affects - Statement and Assign Synonyms
+stmt s; assign a;
+Select <s, a> such that Affects(s, a)
+1 2, 1 5, 1 9, 2 5, 2 14, 5 5, 5 14, 7 11, 10 14, 11 12, 23 24, 32 32
+1000
+6 - Affects - Statement and If Synonyms
+stmt s; if ifs;
+Select s such that Affects(s, ifs)
+SemanticError
+1000
+7 - Affects - Statement and While Synonyms
+stmt s; while w;
+Select s such that Affects(s, w)
+SemanticError
+1000
+8 - Affects - Statement Synonym and Wildcard
+stmt s;
+Select s such that Affects(s, _)
+1, 2, 5, 7, 10, 11, 23, 32
+1000
+9 - Affects - Statement Synonym and Integer
+stmt s;
+Select s such that Affects(s, 14)
+2, 5, 10
+1000
+10 - Affects - Assign Synonym and Integer
+assign a;
+Select a such that Affects(a, 5)
+1, 2, 5
+1000
+11 - Affects - Integer and Statement Synonym
+stmt s;
+Select s such that Affects(1, s)
+2, 5, 9
+1000
+12 - Affects - Integer and Assign Synonym
+assign a;
+Select a such that Affects(5, a)
+5, 14
+1000
+13 - Affects - Integer and Integer
+
+Select BOOLEAN such that Affects(11, 12)
+TRUE
+1000
+14 - Affects - Integer and Wildcard
+
+Select BOOLEAN such that Affects(32, _)
+TRUE
+1000
+15 - Affects - Wildcard and Integer
+
+Select BOOLEAN such that Affects(_, 32)
+TRUE
+1000
+16 - Affects - Statement Synonym and Integer
+stmt s;
+Select s such that Affects(s, 13)
+none
+1000
+17 - Affects - Print Synonym and Integer
+print p;
+Select p such that Affects(p, 5)
+SemanticError
+1000
+18 - Affects - Read Synonym and Integer
+read r;
+Select r such that Affects(r, 5)
+SemanticError
+1000
+19 - Affects - Assign Synonym and Integer
+assign a;
+Select a such that Affects(a, 6)
+none
+1000
+20 - Affects - If Synonym and Integer
+if ifs;
+Select ifs such that Affects(ifs, 5)
+SemanticError
+1000
+21 - Affects - While Synonym and Integer
+while w;
+Select w such that Affects(w, 5)
+SemanticError
+1000
+22 - Affects - Integer and Stmt Synonym
+stmt s;
+Select s such that Affects(13, s)
+none
+1000
+23 - Affects - Integer and Print Synonym
+print p;
+Select p such that Affects(5, p)
+SemanticError
+1000
+24 - Affects - Integer and Read Synonym
+read r;
+Select r such that Affects(5, r)
+SemanticError
+1000
+25 - Affects - Integer and Assign Synonym
+assign a;
+Select a such that Affects(6, a)
+none
+1000
+26 - Affects - Integer and If Synonym
+if ifs;
+Select ifs such that Affects(5, ifs)
+SemanticError
+1000
+27 - Affects - Integer and While Synonym
+while w;
+Select w such that Affects(5, w)
+SemanticError
+1000
+28 - Affects - Integer and Integer
+
+Select BOOLEAN such that Affects(18, 23)
+FALSE
+1000
+29 - Affects - Wildcard and Integer
+
+Select BOOLEAN such that Affects(_, 23)
+FALSE
+1000
+30 - Affects - Integer and Wildcard
+
+Select BOOLEAN such that Affects(18, _)
+FALSE
+1000
+31 - Affects - Print Synonym and Wildcard
+print p;
+Select p such that Affects(p, _)
+SemanticError
+1000
+32 - Affects - Read Synonym and Wildcard
+read r;
+Select r such that Affects(r, _)
+SemanticError
+1000
+33 - Affects - Assign Synonym and Wildcard
+assign a;
+Select a such that Affects(a, _)
+1, 2, 5, 7, 10, 11, 23, 32
+1000
+34 - Affects - If Synonym and Wildcard
+if ifs;
+Select ifs such that Affects(ifs, _)
+SemanticError
+1000
+35 - Affects - While Synonym and Wildcard
+while w;
+Select w such that Affects(w, _)
+SemanticError
+1000
+36 - Affects - Wildcard and Statement Synonym
+stmt s;
+Select s such that Affects(_, s)
+2, 5, 9, 11, 12, 14, 24, 32
+1000
+37 - Affects - Wildcard and Print Synonym
+print p;
+Select p such that Affects(_, p)
+SemanticError
+1000
+38 - Affects - Wildcard and Read Synonym
+read r;
+Select r such that Affects(_, r)
+SemanticError
+1000
+39 - Affects - wildcard - Assign
+assign a;
+Select a such that Affects(_, a)
+2, 5, 9, 11, 12, 14, 24, 32
+1000
+40 - Affects - wildcard - If
+if ifs;
+Select ifs such that Affects(_, ifs)
+SemanticError
+1000
+41 - Affects - wildcard - While
+while w;
+Select w such that Affects(_, w)
+SemanticError
+1000
+42 - Affects - wildcard - wildcard
+
+Select BOOLEAN such that Affects(_, _)
+TRUE
+1000
+43 - Affects - int - Stmt (stmt#)
+stmt s;
+Select s.stmt# such that Affects(2, s)
+5, 14
+1000
+44 - Affects - int - Assign (stmt#)
+assign a;
+Select a.stmt# such that Affects(11, a)
+12
+1000

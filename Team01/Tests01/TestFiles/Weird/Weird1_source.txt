@@ -1,0 +1,75 @@
+
+
+
+
+
+
+                                                                                                               procedure
+                                first {
+
+
+    x1
+
+
+
+
+        =
+
+
+
+            y
+
+                +
+
+
+            z                                                       -
+
+
+                1
+
+        ; x2=2
+    ;
+
+    if
+        (
+                                                x3
+                                                                !=
+
+y
+
+)
+
+then
+
+
+{
+
+read
+x4
+
+;
+
+}
+
+else
+
+{
+
+print
+                                                                                                        x5
+;
+
+}
+
+call
+
+second
+                                                                                                                     ;
+
+
+
+
+
+
+
+} procedure second{x7=s+p;x8=p*k/b;x9=q/p-s;x10=cs*3203;while(x11<=10){x12=3;}}

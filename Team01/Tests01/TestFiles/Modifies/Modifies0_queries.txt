@@ -1,0 +1,205 @@
+1 - valid modifies - one number one variable - select statement [number]
+stmt s; variable v;
+Select s such that Modifies(8, v)
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+5000
+2 - valid modifies - one statement one variable - select variable
+variable v;
+Select v such that Modifies(3, v)
+x3
+5000
+3 - valid modifies - one statement one _ - select statement
+stmt s;
+Select s such that Modifies(7, _)
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+5000
+4 - valid modifies - one statement one _ - select statement
+stmt s;
+Select s such that Modifies(1, _)
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+5000
+5 - valid modifies - one statement one _ - select statement
+stmt s;
+Select s such that Modifies(4, _)
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+5000
+6 - valid modifies - one statement one IDENT - select statement
+stmt s; variable v;
+Select s such that Modifies(s, "x1")
+1
+5000
+7 - valid modifies - one procedure one variable - select procedure [not implemented yet, all return none]
+procedure p; variable v;
+Select p such that Modifies(p, v)
+simpleProcedure
+5000
+8 - valid modifies - one procedure one variable - select variable
+procedure p; variable v;
+Select v such that Modifies(p, v)
+x1,x3,x6,x7,x8,x9
+5000
+9 - valid modifies - one procedure one _ - select procedure
+procedure p;
+Select p such that Modifies(p, _)
+simpleProcedure
+5000
+10 - valid modifies - one procedure one IDENT - select statement
+procedure p;
+Select p such that Modifies(p, "x1")
+simpleProcedure
+5000
+11 - valid modifies - one statement one variable - select statement [statement]
+stmt s; variable v;
+Select s such that Modifies(s, v)
+1, 2, 3, 4, 6, 7, 8, 9
+5000
+12 - valid modifies - one statement one variable - select variable
+stmt s; variable v;
+Select v such that Modifies(s, v)
+x1, x3, x6, x7, x8, x9
+5000
+13 - valid modifies - one statement one _ - select statement
+stmt s; variable v;
+Select s such that Modifies(s, _)
+1, 2, 3, 4, 6, 7, 8, 9
+5000
+14 - valid modifies - one statement one IDENT - select statement
+stmt s; variable v;
+Select s such that Modifies(s, "x1")
+1
+5000
+15 - valid modifies - one assign one variable - select variable [assign]
+assign a; variable v;
+Select v such that Modifies(a, v)
+x3, x6, x7, x8, x9
+5000
+16 - valid modifies - one assign one _ - select assign
+assign a; variable v;
+Select a such that Modifies(a, v)
+3, 6, 7, 8, 9
+5000
+17 - valid modifies - one assign one _ - select assign
+assign a;
+Select a such that Modifies(a, _)
+3, 6, 7, 8, 9
+5000
+18 - valid modifies - one assign one IDENT - select assign
+assign a;
+Select a such that Modifies(a, "x6")
+6
+5000
+19 - valid modifies - one read one variable - select read [read]
+read r; variable v;
+Select r such that Modifies(r, v)
+1
+5000
+20 - valid modifies - one read one variable - select variable
+read r; variable v;
+Select v such that Modifies(r, v)
+x1
+5000
+21 - valid modifies - one read one _ - select read
+read r;
+Select r such that Modifies(r, _)
+1
+5000
+22 - valid modifies - one read one IDENT - select read
+read r;
+Select r such that Modifies(r, "x2")
+none
+5000
+23 - invalid modifies - one print one variable - select print [print]
+print p; variable v;
+Select p such that Modifies(p, v)
+none
+5000
+24 - invalid modifies - one print one variable - select variable
+print p; variable v;
+Select v such that Modifies(p, v)
+none
+5000
+25 - invalid modifies - one print one _ - select print
+print p;
+Select p such that Modifies(p, _)
+none
+5000
+26 - invalid modifies - one print one IDENT - select print
+print p;
+Select p such that Modifies(p, "x2")
+none
+5000
+27 - valid modifies - one while one variable - select while [while]
+while w; variable v;
+Select w such that Modifies(w, v)
+2
+5000
+28 - valid modifies - one while one variable - select variable
+while w; variable v;
+Select v such that Modifies(w, v)
+x3, x6, x7
+5000
+29 - valid modifies - one while one _ - select while
+while w;
+Select w such that Modifies(w, _)
+2
+5000
+30 - valid modifies - one while one IDENT - select while
+while w;
+Select w such that Modifies(w, "x2")
+none
+5000
+31 - valid modifies - one if one variable - select if [if]
+if i; variable v;
+Select i such that Modifies(i, v)
+4
+5000
+32 - valid modifies - one if one variable - select variable
+if i; variable v;
+Select v such that Modifies(i, v)
+x6
+5000
+33 - valid modifies - one if one _ - select if
+if i;
+Select i such that Modifies(i, _)
+4
+5000
+34 - valid modifies - one if one IDENT - select if
+if i;
+Select i such that Modifies(i, "x1")
+none
+5000
+35 - invalid modifies - two variable - select first variable
+variable v, v1;
+Select v such that Modifies(v, v1)
+SemanticError
+5000
+36 - invalid modifies - two variable - select second variable
+variable v, v1;
+Select v1 such that Modifies(v, v1)
+SemanticError
+5000
+37 - invalid modifies - two variable - select statement
+variable v, v1; stmt s;
+Select s such that Modifies(v, v1)
+SemanticError
+5000
+38 - invalid modifies - two variable - select variable
+variable v;
+Select v such that Modifies(v, v)
+SemanticError
+5000
+39 - invalid modifies - two variable - select statement
+variable v; stmt s;
+Select s such that Modifies(v, v)
+SemanticError
+5000
+40 - invalid modifies - one variable one _ - select variable
+variable v;
+Select v such that Modifies(v, _)
+SemanticError
+5000
+41 - invalid modifies - one variable one IDENT - select statement
+variable v; stmt s;
+Select s such that Modifies(v, "x1")
+SemanticError
+5000

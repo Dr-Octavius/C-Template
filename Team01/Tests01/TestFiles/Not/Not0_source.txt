@@ -1,0 +1,23 @@
+procedure First {
+    read x;
+                  read y;
+                  print a;
+                  print b;
+                  call Second;
+                  assign = read + print - call;
+                  procedure = variable / constant % 0 * 100;
+                  if (a == b) then {
+                    do = funky;
+                  } else { do = not + funky;}
+                  while (true == true) {
+                    stress = stress + maximum;
+                    maximum = maximum * maximum;
+                    haiya = walao;
+                    funky = not + funky;
+                    divide = by / 0;
+                    if (a == b) then {
+                        xd = hehe;
+                    } else { bad = coding;
+                        funky = 1 + maximum;}}}
+procedure Second{ cs3203 = cancer;
+                  why = does + this - mod % exist;}

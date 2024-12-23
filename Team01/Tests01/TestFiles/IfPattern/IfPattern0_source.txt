@@ -1,0 +1,41 @@
+procedure firstProcedure {
+    if ((!(x1 > a1)) || (!((x2 <= 1) && (x1 % 12345 < b1)))) then {
+        if (!(!(x2 < x1))) then {
+            if ((x3 < x2) || ((x2 >= x3) || (x1 < x2))) then {
+                while ((x1 <= 1 - (x3 - a4)) || ((!(x4 == 2)) && (x2 != x3 + 1234))) {
+                    read x5;
+                }
+            } else {
+                while (!((x6 < 10) || ((x2 != x3) || (x1 != x4)))) {
+                    print x7;
+                }
+            }
+        } else {
+            x1 = x1;
+            x2 = x2;
+            x3 = x3;
+            x4 = x4;
+            x6 = x1 + x2 + x3 + x4 + x5 + x6 + if + while;
+        }
+    } else {
+        call secondProcedure;
+    }
+}
+
+procedure secondProcedure {
+    if (!((!(!(x14 < 50 * 60 / 100 % 999 + firstProcedure - 1010101))) && (!(x1 < x13)))) then {
+        if (!((x2 < x1) ||                   (999 < 
+100 * 
+test1))) then {
+            while (x16 < test1234567890longnameHAHAHAHAHAHAHAHAHSOSTRESSSSSSSSSSSssssssssssssssssss10101010101010101001) {
+                print x17;
+            }
+        } else {
+            while (!(!(!(!((x4 < 20) || (20 >= a4)))))) {
+                print x19;
+            }
+        }
+    } else {
+        read firstProcedure;
+    }
+}

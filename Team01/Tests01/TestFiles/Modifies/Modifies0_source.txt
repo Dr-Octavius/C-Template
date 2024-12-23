@@ -1,0 +1,16 @@
+procedure simpleProcedure {
+    read x1;
+    while (x1 <= 50) {
+        x3 = x1 * 2 + (10 * 3);
+        if (x3 < 10) then {
+            print x3;
+        } else {
+            x6 = 0;
+        }
+        x7 = x1 + 2;
+    }
+    x8 = x1 * 2;
+    x9 = (x8 + (x1 / 2)) / 2 + 3;
+    print x1;
+}
+

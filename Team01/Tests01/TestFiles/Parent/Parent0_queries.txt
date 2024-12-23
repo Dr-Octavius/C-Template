@@ -1,0 +1,85 @@
+4 - Select s that is the parent of line 7
+stmt s;
+Select s such that Parent (s, 7)
+6
+5000
+6 - Select while that is the parent of line 11
+while w;
+Select w such that Parent (w, 11)
+9
+5000
+7 - Select if that is the parent of line 7
+if i;
+Select i such that Parent (i, 7)
+6
+5000
+8 - Select s that is the parent of line 10
+stmt s;
+Select s such that Parent (s, 10)
+9
+5000
+10 - Select if that line 3 is parent of it
+if i;
+Select i such that Parent (3, i)
+6
+5000
+15 - Select while that is the parent of while
+while w, w1;
+Select w such that Parent(w, w1)
+9, 25
+5000
+16 - Select while that its parent is while
+while w, w1;
+Select w1 such that Parent(w, w1)
+11, 28
+5000
+20 - Select undefined while
+read r;
+Select w such that Parent (w, r)
+SemanticError
+5000
+40 - Select print such that Parent (_, p)
+print p;
+Select p such that Parent (_, p)
+5, 14, 22, 23, 27
+5000
+42 - Select print such that Parent (p, _)
+print p;
+Select p such that Parent (p, _)
+none
+5000
+43 - Select stmt such that Parent (w, s)
+while w; stmt s;
+Select s such that Parent (w, s)
+4, 5, 6, 16, 10, 11, 12, 20, 22, 23, 24, 26, 27, 28, 29
+5000
+45 - Select if such that Parent (w, i)
+while w; if i;
+Select i such that Parent (w, i)
+6, 12, 24
+5000
+46 - Select while such that Parent (i, w)
+while w; if i;
+Select w such that Parent (i, w)
+9, 19, 21, 25
+5000
+49 - Select stmt s such that Parent (s, _)
+stmt s;
+Select s such that Parent (s, _)
+3, 6, 9, 11, 12, 17, 19, 21, 24, 25, 28
+5000
+50 - Select if such that Parent (_, i)
+if i;
+Select i such that Parent (_, i)
+6, 12, 24
+5000
+51 - Select while such that Parent (_, w)
+while w;
+Select w such that Parent (_, w)
+9, 11, 19, 21, 25, 28
+5000
+52 - Select stmt s such that Parent (s, w)
+while w; stmt s;
+Select s such that Parent (s, w)
+6, 9, 17, 24, 25
+5000

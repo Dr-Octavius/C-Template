@@ -1,0 +1,56 @@
+procedure simple {
+   x1 = 10;
+   x2 = 20;
+   x3 = x3 + x1;
+   print x4;
+
+   if (x5 > 50) then {
+        x6 = p + q;
+        x7 = 10;
+        print x8;
+        while (x9 > 10) {
+            x10 = 10;
+            read x11;
+            print x12;
+            x13 = p + q + r + ((((s + t) * a) - 5) + m) + (z + g);
+
+            if (x14 < 9) then {
+                x15 = 10;
+                read x16;
+            } else {
+                x17 = p + q + r + ((((s + t) * a) - 5) + m) + (z + g);
+                print x18; }}}
+   else {
+        x19 = p19 + a19;
+        x20 = 20;
+
+        while (x21 > 8) {
+            x22 = x22 + 10;
+            x23 = x23 + x23 + x23 * x23 * x23;
+            x24 = x24 + x24 + (x24 + x24 * x24) * x24 * x24 * x24;
+            if (x25 > 55555) then {
+                print x26;
+                x27 = 10;
+                x28 = 0; }
+            else {
+                print x29;
+                read x30; }}}
+   x31 = z + x + c;
+   print x32;
+   read x33;
+   if (x34 > 10) then {
+        if (x35 > 10) then {
+            x36 = 10; }
+        else {
+            read x37; }}
+   else {
+        read x38;
+        while (x39 > 10) {
+            while (x40 > 0) {
+                read x41; }
+            print x42; }}
+   while (x43 > 10) {
+        if (x44 > 10) then {
+            x45 = 10; }
+        else {
+            x46 = x46 * x46; }}}

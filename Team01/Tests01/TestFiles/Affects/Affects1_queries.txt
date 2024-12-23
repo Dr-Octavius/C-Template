@@ -1,0 +1,75 @@
+1 - valid affects
+assign a1;
+Select a1 such that Affects(a1, a1)
+22
+5000
+2 - valid affects
+assign a1, a2;
+Select <a1, a2> such that Affects(a1, a2)
+4 5, 4 7, 5 15, 5 18, 8 9, 8 15, 9 15, 9 18, 10 15, 10 16, 10 18, 11 15, 14 15, 14 16, 15 16, 15 18, 22 22
+5000
+3 - valid affects
+assign a1, a2;
+Select <a1, a2> such that Affects(a1, a2) with a2.stmt# = 15
+5 15, 8 15, 9 15, 10 15, 11 15, 14 15
+5000
+4 - valid affects same statement
+
+Select BOOLEAN such that Affects(8, 8)
+FALSE
+5000
+5 - valid affects same statement
+
+Select BOOLEAN such that Affects(15, 15)
+FALSE
+5000
+6 - valid affects same statement
+
+Select BOOLEAN such that Affects(22, 22)
+TRUE
+5000
+7 - valid affects
+
+Select BOOLEAN such that Affects(4, 5)
+TRUE
+5000
+8 - valid affects
+
+Select BOOLEAN such that Affects(10, 16)
+TRUE
+5000
+9 - valid affects in if
+
+Select BOOLEAN such that Affects(4, 7)
+TRUE
+5000
+10 - valid affects separate if branches
+
+Select BOOLEAN such that Affects(7, 10)
+FALSE
+5000
+11 - valid affects modified in procedure
+
+Select BOOLEAN such that Affects(12, 15)
+FALSE
+5000
+12 - valid affects not modified in procedure
+
+Select BOOLEAN such that Affects(11, 15)
+TRUE
+5000
+13 - valid affects not modified in procedure
+
+Select BOOLEAN such that Affects(10, 15)
+TRUE
+5000
+14 - valid affects in separate procedures
+
+Select BOOLEAN such that Affects(13, 15)
+FALSE
+5000
+15 - valid affects in separate procedures
+
+Select BOOLEAN such that Affects(19, 15)
+FALSE
+5000

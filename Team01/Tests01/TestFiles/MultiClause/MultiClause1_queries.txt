@@ -1,0 +1,130 @@
+1 - multiple queries - Affects Affects Uses Follows
+stmt s1, s2; assign a, a1, a2; variable v;
+Select <s1, a> such that Affects(a1, 6) and Affects(5, a2) and Uses(s1, v) and Follows(s1, a)
+2 28, 3 27, 5 6, 10 19, 19 20, 23 24, 29 30 ,37 39
+5000
+2 - multiple queries - Affects Affects Uses Follows
+stmt s1, s2; assign a, a1, a2; variable v;
+Select a1 such that Affects(a1, 6)
+5, 6
+5000
+3 - multiple queries - Affects Affects Uses Follows
+stmt s1, s2; assign a, a1, a2; variable v;
+Select a2 such that Affects(5, a2)
+6
+5000
+4 - multiple queries - Affects Affects Uses Follows
+stmt s1, s2; assign a, a1, a2; variable v;
+Select <a1, a2> such that Affects(a1, 6) and Affects(5, a2)
+5 6, 6 6
+5000
+5 - multiple queries - Affects Affects Uses Follows
+stmt s1, s2; assign a, a1, a2; variable v;
+Select <a1, a2> such that Affects(a1, 6) and Affects(5, a2) and Follows(s1, s2)
+5 6, 6 6
+5000
+6 - multiple queries - Affects Affects Uses Follows
+stmt s1, s2; assign a, a1, a2; variable v;
+Select <a1, a2> such that Affects(a1, 6) and Affects(5, a2) and Uses(s1, v) and Follows(s1, a)
+5 6, 6 6
+5000
+8 - multiple queries Affects Uses Follows Modifies
+assign a1, a2; variable v; stmt s;
+Select <a1, v> such that Uses(a1, v)
+5 x1, 6 x4, 6 x5, 6 x6, 9 x9, 17 x14, 19 x19, 20 x9, 27 x1, 27 x2, 28 x18, 30 x1, 30 x2, 33 x5, 34 x6, 38 x17, 39 x2, 39 x3, 39 x4, 39 x5
+5000
+9 - multiple queries Affects Uses Follows Modifies
+assign a1, a2; variable v; stmt s;
+Select <a1, s> such that Follows(a1, s)
+5 6, 6 7, 9 10, 17 18, 19 20, 20 21, 25 26, 30 31, 39 40
+5000
+10 - multiple queries Affects Uses Follows Modifies
+assign a1, a2; variable v; stmt s;
+Select <a1, v> such that Modifies(a1, v)
+5 x5, 6 x6, 9 x9, 17 x17, 19 x19, 20 x20, 24 x24, 25 x25, 27 x27, 28 x28, 30 x27, 33 x5, 34 x6, 38 x17, 39 x1
+5000
+13 - multiple queries Affects Follows Modifies Parent
+stmt s1, s2; assign a1, a2;
+Select <s1, s2> such that Parent*(s1, s2)
+1 10,1 11,1 12,1 13,1 14,1 15,1 16,1 17,1 18,1 19,1 2,1 20,1 21,1 22,1 23,1 24,1 25,1 26,1 27,1 28,1 3,1 4,1 5,1 6,1 7,1 8,1 9,10 11,10 12,10 13,10 14,10 15,10 16,10 17,10 18,12 13,12 14,12 15,12 16,12 17,12 18,15 16,15 17,15 18,16 17,16 18,2 10,2 11,2 12,2 13,2 14,2 15,2 16,2 17,2 18,2 19,2 20,2 21,2 22,2 23,2 24,2 25,2 26,2 27,2 3,2 4,2 5,2 6,2 7,2 8,2 9,21 22,3 10,3 11,3 12,3 13,3 14,3 15,3 16,3 17,3 18,3 19,3 20,3 21,3 22,3 23,3 24,3 25,3 26,3 4,3 5,3 6,3 7,3 8,3 9,32 33,32 34,37 38,4 10,4 11,4 12,4 13,4 14,4 15,4 16,4 17,4 18,4 19,4 20,4 21,4 22,4 23,4 24,4 5,4 6,4 7,4 8,4 9,7 10,7 11,7 12,7 13,7 14,7 15,7 16,7 17,7 18,7 19,7 20,7 21,7 22,7 23,7 24,7 8,7 9,8 10,8 11,8 12,8 13,8 14,8 15,8 16,8 17,8 18,8 19,8 20,8 21,8 22,8 23,8 24,8 9
+5000
+14 - multiple queries Affects Follows Modifies Parent
+stmt s1, s2; variable v;
+Select <s1, s2> such that Affects(s1, s2) and Follows(s1, s2) and Modifies(s1, v)
+5 6
+5000
+15 - multiple queries Affects Follows Modifies Parent
+stmt s1, s2; variable v;
+Select <s1, s2> such that Affects(s1, s2) and Follows(s1, s2) and Modifies(s1, v) and Parent*(s1, s2)
+none
+5000
+16 - multiple queries Affects Follows Modifies Parent
+stmt s1, s2; variable v;
+Select <s1, v> such that Affects(s1, s2) and Follows(s1, s2) and Modifies(s1, v)
+5 x5
+5000
+17 - multiple queries
+stmt s1, s2, s3; variable v; procedure p, q; assign a;
+Select <p, q> such that Affects(s1, s2) and Parent*(s2, s3) pattern a(_,_) such that Calls(p, q)
+none
+5000
+18 - multiple queries
+stmt s1, s2; variable v; procedure p, q; assign a;
+Select <a, s1> such that Affects(a, s1) pattern a ("x5", _) such that Calls(p, q)
+5 6
+5000
+19 - multiple queries
+stmt s1, s2; variable v; procedure p, q; assign a;
+Select <a, s1> such that Affects(a, s1) pattern a ("x5", _) such that Calls(p, q) with p.procName = "deepNesting" and a.stmt# = 5
+5 6
+5000
+20 - multiple queries
+stmt s1, s2, s3, s4; variable v; procedure p, q; assign a;
+Select <s1, s2, s3, s4> such that Affects(s1, s2) and Calls(p, q) and Next(s3, s4) and Affects(s3, s4)
+6 6 5 6, 5 6 5 6, 9 20 5 6, 9 9 5 6, 19 19 5 6, 38 38 5 6
+5000
+22 - multiple queries
+stmt s; variable v;
+Select <s, v> such that Uses(s, v) with s.stmt# = 1
+1 x1,1 x2, 1 x3, 1 x4, 1 x40, 1 x5, 1 x6, 1 x7, 1 x8, 1 x9, 1 x10, 1 x11, 1 x12, 1 x13, 1 x14, 1 x15, 1 x16, 1 x17, 1 x18, 1 x19, 1 x20, 1 x21, 1 x22, 1 x26, 1 x29, 1 x32, 1 x37
+5000
+23 - multiple queries
+stmt s1, s2; variable v1, v2;
+Select s2 such that Uses(s2, v2) with v2.varName = "x1"
+1, 2, 3, 4, 5, 7, 8, 10, 12, 15, 23, 27, 30
+5000
+24 - multiple queries
+stmt s1, s2; variable v1, v2;
+Select <s1, s2> such that Uses(s1, v1) with s1.stmt# = 1 such that Uses(s2, v2) with v2.varName = "x1"
+1 1, 1 2, 1 3, 1 4, 1 5, 1 7, 1 8, 1 10, 1 12, 1 15, 1 23, 1 27, 1 30
+5000
+25 - multiple queries
+stmt s1, s2; variable v1, v2; assign a;
+Select <s1, v1> such that Uses(s1, v1) and Uses(s2, v2) and Modifies(a, v1) pattern a(_, _)
+1 x1, 1 x17, 1 x19, 1 x20, 1 x5, 1 x6, 1 x9, 10 x1, 12 x1, 15 x1, 19 x19, 2 x1, 2 x17, 2 x19, 2 x20, 2 x5, 2 x6, 2 x9, 20 x9, 21 x20, 23 x1, 23 x17, 23 x5, 23 x6, 27 x1, 3 x1, 3 x17, 3 x19, 3 x20, 3 x5, 3 x6, 3 x9, 30 x1, 32 x5, 32 x6, 33 x5, 34 x6, 35 x17, 35 x5, 37 x17, 37 x5, 38 x17, 39 x5, 4 x1, 4 x17, 4 x19, 4 x20, 4 x5, 4 x6, 4 x9, 5 x1, 6 x5, 6 x6, 7 x1, 7 x17, 7 x19, 7 x20, 7 x5, 7 x6, 7 x9, 8 x1, 8 x17, 8 x19, 8 x20, 8 x5, 8 x6, 8 x9, 9 x9
+5000
+27 - multiple queries
+stmt s1, s2; variable v1, v2; assign a;
+Select <a, v1> such that Uses(s1, v1) and Next*(s1, s2) and Modifies(a, v1) pattern a(_, _)
+5 x5, 6 x6, 9 x9, 17 x17, 19 x19, 20 x20, 33 x5, 34 x6, 38 x17, 39 x1
+5000
+28 - multiple queries
+stmt s1, s2; variable v1, v2; assign a;
+Select <s1, v1> such that Uses(s1, v1) and Next*(s1, s2) and Modifies(a, v1) pattern a(_, _) with s1.stmt# = 1
+1 x1, 1 x5, 1 x6, 1 x9, 1 x17, 1 x19, 1 x20
+5000
+29 - multiple queries
+stmt s1, s2; variable v1, v2; assign a; procedure p;
+Select <p, v1> such that Uses(p, v1)
+deepNesting x1, deepNesting x10, deepNesting x11, deepNesting x12, deepNesting x13, deepNesting x14,deepNesting x15, deepNesting x16, deepNesting x17, deepNesting x18, deepNesting x19, deepNesting x2, deepNesting x20, deepNesting x21, deepNesting x22, deepNesting x26, deepNesting x29, deepNesting x3, deepNesting x32, deepNesting x37, deepNesting x4, deepNesting x40, deepNesting x5, deepNesting x6, deepNesting x7, deepNesting x8, deepNesting x9, doesNotModify x41, procedure29 x1, procedure29 x17, procedure29 x2, procedure29 x29, procedure29 x3, procedure29 x32, procedure29 x37, procedure29 x4, procedure29 x40, procedure29 x5, procedure29 x6, procedure35 x17, procedure35 x2, procedure35 x3, procedure35 x37, procedure35 x4, procedure35 x40, procedure35 x5
+5000
+30 - multiple queries
+stmt s1, s2; variable v1, v2; assign a;
+Select <a, v1> such that Modifies(a, v1)
+17 x17, 19 x19, 20 x20, 24 x24, 25 x25, 27 x27, 28 x28, 30 x27, 33 x5, 34 x6, 38 x17, 39 x1, 5 x5, 6 x6, 9 x9
+5000
+31 - multiple queries
+stmt s1, s2; variable v1, v2; assign a; procedure p;
+Select <p, a> such that Uses(p, v1) and Modifies(a, v1)
+deepNesting 17, deepNesting 19, deepNesting 20, deepNesting 33, deepNesting 34, deepNesting 38, deepNesting 39, deepNesting 5, deepNesting 6, deepNesting 9, procedure29 17, procedure29 33, procedure29 34, procedure29 38, procedure29 39, procedure29 5, procedure29 6, procedure35 17, procedure35 33, procedure35 38, procedure35 5
+5000

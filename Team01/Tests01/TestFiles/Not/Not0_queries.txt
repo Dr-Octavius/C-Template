@@ -1,0 +1,30 @@
+1 - All assigns a1 a2 that are not Next*(a1, a2)
+read r1, r2; print p1, p2; call c1, c2; assign a1, a2; procedure proc1, proc2; variable v1, v2; constant con1, con2; stmt s1, s2;
+Select <a1, a2> such that not Next*(s1, s2) with s1.stmt# = a1.stmt# with s2.stmt# = a2.stmt# and not a1.stmt# = a2.stmt#
+8 7,10 7,10 8,11 7,11 8,13 7,13 8,13 10,13 11,14 7,14 8,14 10,14 11,15 7,15 8,15 10,15 11,16 7,16 8,16 10,16 11,17 7,17 8,17 10,17 11,19 7,19 8,19 10,19 11,20 7,20 8,20 10,20 11,21 7,21 8,21 10,21 11, 23 22,7 22, 7 23,8 22, 8 23,10 22, 10 23,11 22, 11 23,13 22, 13 23,14 22, 14 23,15 22, 15 23,16 22, 16 23,17 22, 17 23,19 22, 19 23,20 22, 20 23,21 22, 21 23,22 7, 23 7,22 8, 23 8,22 10, 23 10,22 11, 23 11,22 13, 23 13,22 14, 23 14,22 15, 23 15,22 16, 23 16,22 17, 23 17,22 19, 23 19,22 20, 23 20,22 21, 23 21,10 11, 11 10
+5000
+2 - some call stmt c in a procedure p1 that calls p2, but does not call back to p1.
+read r1, r2; print p1, p2; call c1, c2; assign a1, a2; procedure proc1, proc2; variable v1, v2; constant con1, con2; stmt s1, s2;
+Select <proc1, proc2, c1> such that not Calls(proc1, proc2) with c1.procName = proc1.procName with c2.procName = proc2.procName
+Second Second 5
+5000
+3 - all variables found not within the if or while stmts, and are used (in)directly by procedure First
+read r1, r2; print p1, p2; call c1, c2; assign a1, a2; procedure proc1, proc2; variable v1, v2; constant con1, con2; stmt s1, s2; while w; if if;
+Select v1 such that not Uses(w, v1) and not Uses(if, v1) such that Uses(proc1, v1) with proc1.procName = "First"
+read, print, call, variable, constant, cancer, does, this, mod, exist
+5000
+4 - all statements that are in a different nesting level but can happen immediately after the previous statement
+read r1, r2; print p1, p2; call c1, c2; assign a1, a2; procedure proc1, proc2; variable v1, v2; constant con1, con2; stmt s1, s2; while w; if if;
+Select <s1, s2> such that Next(s1, s2) and not Follows(s1, s2)
+9 10, 9 11, 12 13, 18 19, 18 20, 10 12, 11 12, 19 12, 21 12
+5000
+5 - poor man's affects
+stmt s2; assign a1, a3; if if; while while; variable v1;
+Select <a1, a3> such that Next*(a1, a3) and Next*(a1, s2) and Next*(s2, a3) pattern a1(v1, _) such that Uses(a3, v1) and not Modifies(s2, v1) with not s2.stmt# = if.stmt# and not s2.stmt# = while.stmt#
+13 13, 14 13, 14 14, 14 21, 16 16, 21 16
+5000
+6 - actual affects
+assign a1, a2;
+Select <a1, a2> such that Affects(a1, a2)
+13 13, 14 13, 14 14, 14 21, 16 16, 21 16
+5000

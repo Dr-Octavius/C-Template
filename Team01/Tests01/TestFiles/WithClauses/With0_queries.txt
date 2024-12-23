@@ -1,0 +1,505 @@
+1 - valid with, follows
+stmt s1, s2;
+Select <s1, s2> such that Follows(s1, s2)
+2 28, 3 27, 5 6, 6 7, 9 10, 10 19, 13 14, 14 15, 17 18, 19 20, 20 21, 21 23, 23 24, 25 26, 29 30, 30 31, 31 32, 32 35, 36 37, 37 39, 39 40
+5000
+2 - valid with, follows
+stmt s1, s2; assign a;
+Select <s1, s2> such that Follows(s1, s2) with 2 = 5
+none
+5000
+3 - valid with, follows
+stmt s1, s2;
+Select <s1, s2> such that Follows(s1, s2) with 2 = 2
+2 28, 3 27, 5 6, 6 7, 9 10, 10 19, 13 14, 14 15, 17 18, 19 20, 20 21, 21 23, 23 24, 25 26, 29 30, 30 31, 31 32, 32 35, 36 37, 37 39, 39 40
+5000
+4 - valid with, follows
+stmt s1, s2;
+Select <s1, s2> such that Follows(s1, s2) with s1.stmt# = 2
+2 28
+5000
+5 - valid with, follows
+stmt s1, s2;
+Select <s1, s2> such that Follows(s1, s2) with 2 = s1.stmt#
+2 28
+5000
+6 - valid with, follows
+stmt s1, s2;
+Select <s1, s2> such that Follows(s1, s2) with s1.stmt# = 2 and s1.stmt# = 2 with s1.stmt# = 2 and s1.stmt# = 2
+2 28
+5000
+7 - valid with, follows
+stmt s1, s2;
+Select <s1, s2> such that Follows(s1, s2) with s1.stmt# = s2.stmt#
+none
+5000
+8 - valid with, follows
+stmt s1, s2; assign a;
+Select <s1, s2> such that Follows(s1, s2) with s1.stmt# = 2 and a.stmt# = 5
+2 28
+5000
+9 - valid with, follows
+stmt s1, s2; assign a;
+Select <s1, s2> such that Follows(s1, s2) with s1.stmt# = 2 and a.stmt# = 5000
+none
+5000
+10 - valid with, follows
+stmt s1, s2; assign a;
+Select <s1, s2> such that Follows(s1, s2) with s1.stmt# = 2 and 5 = a.stmt#
+2 28
+5000
+11 - valid with, follows
+stmt s1, s2; assign a;
+Select <s1, s2> such that Follows(s1, s2) with 2 = s1.stmt# and 5 = a.stmt#
+2 28
+5000
+12 - valid with, follows
+stmt s1, s2; assign a;
+Select <s1, s2> such that Follows(s1, s2) with s1.stmt# = 2 and a.stmt# = 1
+none
+5000
+13 - valid with, follows
+stmt s1, s2;
+Select <s1, s2> such that Follows(s1, s2) with s2.stmt# = 7
+6 7
+5000
+14 - valid with, follows
+stmt s1, s2;
+Select <s1, s2> such that Follows(s1, s2) with s1.stmt# = 2 and s2.stmt# = 28
+2 28
+5000
+15 - valid with, follows
+assign a1, a2;
+Select <a1, a2> such that Follows*(a1, a2)
+5 6, 9 19, 9 20, 9 24, 19 20, 19 24, 20 24
+5000
+16 - valid with, follows
+assign a1, a2;
+Select <a1, a2> such that Follows*(a1, a2) with a2.stmt# = 20
+9 20, 19 20
+5000
+17 - valid with, follows
+assign a1, a2;
+Select <a1, a2> such that Follows*(a1, a2) with a1.stmt# = 9
+9 19, 9 20, 9 24
+5000
+18 - valid with, follows
+assign a1, a2;
+Select <a1, a2> such that Follows*(a1, a2) with a1.stmt# = 9 and a2.stmt# = 20
+9 20
+5000
+19 - valid with, parent
+stmt s1, s2;
+Select <s1, s2> such that Parent(s1, s2)
+1 2, 1 28, 2 27, 2 3, 3 25, 3 26, 3 4, 4 5, 4 6, 4 7, 7 8, 8 10, 8 19, 8 20, 8 21, 8 23, 8 24, 8 9, 10 11, 10 12, 12 13, 12 14, 12 15, 15 16, 16 17, 16 18, 21 22, 32 33, 32 34, 37 38
+5000
+20 - valid with, parent
+stmt s1, s2;
+Select <s1, s2> such that Parent(s1, s2) with s1.stmt# = 8
+8 10, 8 19, 8 20, 8 21, 8 23, 8 24, 8 9
+5000
+21 - valid with, parent
+stmt s1, s2;
+Select <s1, s2> such that Parent(s1, s2) with s2.stmt# = 10
+8 10
+5000
+22 - valid with, follows
+stmt s1, s2;
+Select <s1, s2> such that Parent(s1, s2) with s1.stmt# = 8 and s2.stmt# = 10
+8 10
+5000
+23 - valid with, uses
+assign a; variable v;
+Select <a, v> such that Uses(a, v)
+5 x1, 6 x4, 6 x5, 6 x6, 9 x9, 17 x14, 19 x19, 20 x9, 27 x1, 27 x2, 28 x18, 30 x1, 30 x2, 33 x5, 34 x6, 38 x17, 39 x2, 39 x3, 39 x4, 39 x5
+5000
+24 - valid with, uses
+assign a; variable v;
+Select <a, v> such that Uses(a, v) with v.varName = v.varName
+5 x1, 6 x4, 6 x5, 6 x6, 9 x9, 17 x14, 19 x19, 20 x9, 27 x1, 27 x2, 28 x18, 30 x1, 30 x2, 33 x5, 34 x6, 38 x17, 39 x2, 39 x3, 39 x4, 39 x5
+5000
+25 - valid with, uses
+assign a; variable v;
+Select <a, v> such that Uses(a, v) with a.stmt# = 5
+5 x1
+5000
+26 - valid with, uses
+assign a; variable v;
+Select <a, v> such that Uses(a, v) with v.varName = "x1"
+5 x1, 27 x1, 30 x1
+5000
+27 - valid with, uses
+assign a; variable v;
+Select <a, v> such that Uses(a, v) with "x1" = v.varName
+5 x1, 27 x1, 30 x1
+5000
+28 - valid with, uses
+print p; variable v;
+Select <p, v> such that Uses(p, v)
+11 x11, 13 x13, 18 x18, 22 x22, 26 x26, 29 x29, 40 x40, 41 x41
+5000
+29 - valid with, uses
+print p; variable v;
+Select <p, v> such that Uses(p, v) with p.stmt# = 11
+11 x11
+5000
+30 - valid with, uses
+print p; variable v;
+Select <p, v> such that Uses(p, v) with 11 = p.stmt#
+11 x11
+5000
+31 - valid with, uses
+print p; variable v;
+Select <p, v> such that Uses(p, v) with p.stmt# = 69
+none
+5000
+32 - valid with, uses
+print p; variable v;
+Select <p, v> such that Uses(p, v) with p.varName = "x11"
+11 x11
+5000
+33 - valid with, uses
+print p; variable v;
+Select <p, v> such that Uses(p, v) with v.varName = "x11"
+11 x11
+5000
+34 - valid with, uses
+print p; variable v;
+Select <p, v> such that Uses(p, v) with p.varName = v.varName
+11 x11, 13 x13, 18 x18, 22 x22, 26 x26, 29 x29, 40 x40, 41 x41
+5000
+35 - valid with, uses
+procedure p; variable v;
+Select <p, v> such that Uses(p, v) with p.procName = "procedure35"
+procedure35 x2, procedure35 x3, procedure35 x4, procedure35 x5, procedure35 x17, procedure35 x37, procedure35 x40
+5000
+36 - valid with, uses
+procedure p; variable v;
+Select <p, v> such that Uses(p, v) with "procedure35" = p.procName
+procedure35 x2, procedure35 x3, procedure35 x4, procedure35 x5, procedure35 x17, procedure35 x37, procedure35 x40
+5000
+37 - valid with, uses
+procedure p; variable v;
+Select <p, v> such that Uses(p, v) with p.procName = "doesNotExist"
+none
+5000
+38 - valid with, uses
+procedure p; variable v;
+Select <p, v> such that Uses(p, v) with p.procName = v.varName
+none
+5000
+39 - valid with, uses
+call c; variable v;
+Select <c, v> such that Uses(c, v) with c.procName = "procedure35"
+35 x2, 35 x3, 35 x4, 35 x5, 35 x17, 35 x37, 35 x40
+5000
+40 - valid with, uses
+call c; variable v;
+Select <c, v> such that Uses(c, v) with c.stmt# = 35
+35 x2, 35 x3, 35 x4, 35 x5, 35 x17, 35 x37, 35 x40
+5000
+41 - valid with, uses
+call c; variable v;
+Select <c, v> such that Uses(c, v) with 35 = c.stmt#
+35 x2, 35 x3, 35 x4, 35 x5, 35 x17, 35 x37, 35 x40
+5000
+42 - valid with, uses
+call c; variable v;
+Select <c, v> such that Uses(c, v) with c.procName = "doesNotExist"
+none
+5000
+43 - valid with, uses
+call c; variable v;
+Select <c, v> such that Uses(c, v) with c.procName = v.varName
+none
+5000
+44 - valid with, uses
+call c; variable v;
+Select <c, v> such that Uses(c, v) with "doesNotExist" = c.procName
+none
+5000
+45 - valid with, Modifies
+assign a; variable v;
+Select <a, v> such that Modifies(a, v)
+5 x5, 6 x6, 9 x9, 17 x17, 19 x19, 20 x20, 24 x24, 25 x25, 27 x27, 28 x28, 30 x27, 33 x5, 34 x6, 38 x17, 39 x1
+5000
+46 - valid with, Modifies
+assign a; variable v;
+Select <a, v> such that Modifies(a, v) with a.stmt# = 5
+5 x5
+5000
+47 - valid with, Modifies
+assign a; variable v;
+Select <a, v> such that Modifies(a, v) with v.varName = "x1"
+39 x1
+5000
+48 - valid with, Modifies
+assign a; variable v;
+Select <a, v> such that Modifies(a, v) with v.varName = "x1" and a.stmt# = 39
+39 x1
+5000
+49 - valid with, Modifies
+read r; variable v;
+Select <r, v> such that Modifies(r, v)
+14 x14, 31 x28, 36 x36
+5000
+50 - valid with, Modifies
+read r; variable v;
+Select <r, v> such that Modifies(r, v) with r.stmt# = 14
+14 x14
+5000
+51 - valid with, Modifies
+read r; variable v;
+Select <r, v> such that Modifies(r, v) with r.stmt# = 69
+none
+5000
+52 - valid with, Modifies
+read r; variable v;
+Select <r, v> such that Modifies(r, v) with r.varName = "x14"
+14 x14
+5000
+53 - valid with, Modifies
+read r; variable v;
+Select <r, v> such that Modifies(r, v) with v.varName = "x14"
+14 x14
+5000
+54 - valid with, Modifies
+read r; variable v;
+Select <r, v> such that Modifies(r, v) with v.varName = r.varName
+14 x14, 31 x28, 36 x36
+5000
+55 - valid with, Modifies
+procedure p; variable v;
+Select <p, v> such that Modifies(p, v) with p.procName = "procedure35"
+procedure35 x1, procedure35 x17, procedure35 x36
+5000
+56 - valid with, Modifies
+procedure p; variable v;
+Select <p, v> such that Modifies(p, v) with p.procName = "doesNotExist"
+none
+5000
+57 - valid with, Modifies
+call c; variable v;
+Select <c, v> such that Modifies(c, v) with c.procName = "procedure35"
+35 x1, 35 x17, 35 x36
+5000
+58 - valid with, Modifies
+call c; variable v;
+Select <c, v> such that Modifies(c, v) with c.stmt# = 35
+35 x1, 35 x17, 35 x36
+5000
+59 - valid with, Modifies
+call c; variable v;
+Select <c, v> such that Modifies(c, v) with c.procName = "doesNotExist"
+none
+5000
+60 - valid with, calls
+procedure p1, p2;
+Select <p1, p2> such that Calls*(p1, p2)
+deepNesting procedure29, deepNesting procedure35, procedure29 procedure35
+5000
+61 - valid with, calls
+procedure p1, p2;
+Select <p1, p2> such that Calls*(p1, p2) with p1.procName = "deepNesting"
+deepNesting procedure29, deepNesting procedure35
+5000
+62 - valid with, calls
+procedure p1, p2;
+Select <p1, p2> such that Calls*(p1, p2) with "deepNesting" = p1.procName
+deepNesting procedure29, deepNesting procedure35
+5000
+63 - valid with, calls
+procedure p1, p2;
+Select <p1, p2> such that Calls*(p1, p2) with p2.procName = "procedure35"
+deepNesting procedure35, procedure29 procedure35
+5000
+64 - valid with, calls
+procedure p1, p2;
+Select <p1, p2> such that Calls*(p1, p2) with p1.procName = "deepNesting" and p2.procName = "procedure35"
+deepNesting procedure35
+5000
+65 - valid with, calls
+procedure p1, p2;
+Select <p1, p2> such that Calls*(p1, p2) with p1.procName = "deepNesting" with p2.procName = "procedure35"
+deepNesting procedure35
+5000
+66 - valid with, calls
+procedure p1, p2;
+Select <p1, p2> such that Calls*(p1, p2) with p1.procName = p2.procName
+none
+5000
+67 - valid with, affects
+assign a1, a2;
+Select <a1, a2> such that Affects(a1, a2)
+5 6, 6 6, 9 9, 9 20, 19 19, 38 38
+5000
+68 - valid with, affects
+assign a1, a2;
+Select <a1, a2> such that Affects(a1, a2) with a1.stmt# = 9
+9 9, 9 20
+5000
+69 - valid with, affects
+assign a1, a2;
+Select <a1, a2> such that Affects(a1, a2) with a2.stmt# = 20
+9 20
+5000
+70 - valid with, affects
+assign a1, a2;
+Select <a1, a2> such that Affects(a1, a2) with a1.stmt# = 9 and a2.stmt# = 69
+none
+5000
+71 - valid with, affects
+assign a1, a2;
+Select <a1, a2> such that Affects(a1, a2) with 9 = a1.stmt# and a2.stmt# = 69
+none
+5000
+72 - valid with, next
+stmt s1, s2;
+Select <s1, s2> such that Next(s1, s2)
+1 2,10 11,10 12,11 19,12 13,12 19,13 14,14 15,15 12,15 16,16 15,16 17,17 18,18 16,19 20,2 28,2 3,20 21,21 22,21 23,22 21,23 24,24 8,25 26,26 27,27 2,28 1,29 30,3 25,3 4,30 31,31 32,32 33,32 34,33 35,34 35,36 37,37 38,37 39,38 37,39 40,4 27,4 5,5 6,6 7,7 4,7 8,8 7,8 9,9 10
+5000
+73 - valid with, next
+stmt s1, s2;
+Select <s1, s2> such that Next(s1, s2) with s1.stmt# = 16
+16 15, 16 17
+5000
+74 - valid with, next
+stmt s1, s2;
+Select <s1, s2> such that Next(s1, s2) with s2.stmt# = 69
+none
+5000
+75 - valid with, next
+stmt s1, s2; assign a;
+Select <s1, s2> such that Next(s1, s2) with s1.stmt# = 16 and a.stmt# = 5
+16 15, 16 17
+5000
+76 - valid with, pattern
+stmt s1, s2; assign a; variable v;
+Select a pattern a(v, _) with v.varName = "x5"
+5, 33
+5000
+77 - valid with, pattern
+stmt s1, s2; assign a; variable v;
+Select a pattern a(v, _) with a.stmt# = 5 and a.stmt# = 33
+none
+5000
+78 - invalid with number
+stmt s1;
+Select BOOLEAN such that Follows(s1, 2) with 2.stmt# = 1
+SyntaxError
+5000
+79 - invalid with number
+stmt s1;
+Select BOOLEAN such that Follows(s1, 2) with 2.varName = "1"
+SyntaxError
+5000
+80 - invalid with number
+stmt s1;
+Select BOOLEAN such that Follows(s1, 2) with 2.procName = "something"
+SyntaxError
+5000
+81 - invalid with number
+stmt s1;
+Select BOOLEAN such that Follows(s1, 2) with 2.value = 2
+SyntaxError
+5000
+82 - invalid with stmt
+stmt s1, s2;
+Select BOOLEAN such that Follows(s1, s2) with s2.varName = "something"
+SemanticError
+5000
+83 - invalid with stmt
+stmt s1, s2;
+Select BOOLEAN such that Follows(s1, s2) with s2.procName = "something"
+SemanticError
+5000
+84 - invalid with stmt
+stmt s1, s2;
+Select BOOLEAN such that Follows(s1, s2) with s2.value = 2
+SemanticError
+5000
+85 - invalid with var
+assign a; variable v;
+Select BOOLEAN such that Uses(a, v) with v.stmt# = 9
+SemanticError
+5000
+86 - invalid with var
+assign a; variable v;
+Select BOOLEAN such that Uses(a, v) with v.procName = "x5"
+SemanticError
+5000
+87 - invalid with var
+assign a; variable v;
+Select BOOLEAN such that Uses(a, v) with a.stmt# = v.varName
+SemanticError
+5000
+88 - invalid with var
+assign a; variable v;
+Select BOOLEAN such that Uses(a, v) with v.value = 9
+SemanticError
+5000
+89 - invalid with var
+procedure p; variable v;
+Select BOOLEAN such that Uses(a, v) with v.varName = notValid
+SyntaxError
+5000
+90 - invalid with var
+procedure p; variable v;
+Select BOOLEAN such that Uses(p, v) with p.stmt# = 9
+SemanticError
+5000
+91 - invalid with var
+procedure p; variable v;
+Select BOOLEAN such that Uses(p, v) with p.procName = invalidProcName
+SyntaxError
+5000
+92 - invalid with var
+procedure p; variable v;
+Select BOOLEAN such that Uses(p, v) with v.value = 9
+SemanticError
+5000
+93 - invalid with call
+call c; variable v;
+Select BOOLEAN such that Uses(c, v) with c.stmt# = "9"
+SyntaxError
+5000
+94 - invalid with call
+call c; variable v;
+Select BOOLEAN such that Uses(c, v) with c.varName = "invalidProcName"
+SemanticError
+5000
+95 - invalid with call
+call c; variable v;
+Select BOOLEAN such that Uses(c, v) with c.value = 9
+SemanticError
+5000
+96 - invalid with call
+call c; variable v;
+Select BOOLEAN such that Uses(c, v) with c.procName = invalidName
+SyntaxError
+5000
+97 - invalid with print
+print p; variable v;
+Select BOOLEAN such that Uses(p, v) with p.stmt# = "9"
+SyntaxError
+5000
+98 - invalid with print
+print p; variable v;
+Select BOOLEAN such that Uses(p, v) with p.procName = "x9"
+SemanticError
+5000
+99 - invalid with read
+read r; variable v;
+Select BOOLEAN such that Uses(r, v) with r.stmt# = "9"
+SyntaxError
+5000
+100 - invalid with print
+read r; variable v;
+Select BOOLEAN such that Uses(r, v) with r.procName = "x9"
+SemanticError
+5000
+101 - invalid with read
+read r; variable v;
+Select BOOLEAN such that Uses(r, v) with r.value = 9
+SemanticError
+5000

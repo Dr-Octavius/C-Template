@@ -1,0 +1,83 @@
+name: CI for Cmake Project - MacOs
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  CI:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+        name: Checkout Code
+
+      - name: Cache CMake build
+        uses: actions/cache@v2
+        with:
+          path: |
+            build
+          key: ${{ runner.os }}-cmake-${{ hashFiles('**/CMakeLists.txt', '**/*.cmake') }}
+          restore-keys: |
+            ${{ runner.os }}-cmake-
+      - name: Create Build Environment
+        run: cmake -E make_directory ${{runner.workspace}}/build
+
+      - name: Configure CMake
+        shell: bash
+        working-directory: ${{runner.workspace}}/build
+        run: cmake $GITHUB_WORKSPACE/Team01/Code01/ -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_CXX_FLAGS=--coverage -DCMAKE_C_FLAGS=--coverage -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+      - name: Build Project
+        working-directory: ${{runner.workspace}}/build
+        shell: bash
+        run: cmake --build . --config $BUILD_TYPE
+
+      - name: Install Homebrew dependencies
+        run: |
+          if [ -d "/usr/local/Homebrew/Library/Homebrew/vendor" ]; then
+            echo "Brewfile cache hit, skipping brew update"
+          else
+            echo "Brewfile cache miss, updating brew"
+            brew update
+            brew install llvm # llvm includes clang-tidy
+          fi
+          brew install llvm # llvm includes clang-tidy
+
+      - name: Test Project Verbosely
+        working-directory: ${{runner.workspace}}/build
+        shell: bash
+        run: |
+          ctest -VV
+
+      - uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: nus-cs3203/23s2-cp-spa-team-01
+        name: Upload coverage reports to Codecov
+
+      - name: Copy Auto Tester to build directory
+        run: |
+          mkdir -p ${{runner.workspace}}/23s2-cp-spa-team-01/Team01/Code01/build/src/autotester
+          cp -r ${{runner.workspace}}/build/src/autotester/ ${{runner.workspace}}/23s2-cp-spa-team-01/Team01/Code01/build/src/autotester
+
+      - name: Run System Tests
+        working-directory: ${{runner.workspace}}/23s2-cp-spa-team-01/Team01/Tests01
+        shell: bash
+        run: ./ci_generate_system_test_files.sh
+
+      - name: Upload test output files
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-out-files
+          path: ${{runner.workspace}}/23s2-cp-spa-team-01/Team01/Tests01/TestOutFiles/**/*_out.xml

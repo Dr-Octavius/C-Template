@@ -1,0 +1,55 @@
+1 - Get all variables
+variable                    v
+; Select                    v
+x1, x2, x3, x4, x5, x7, x8, x9, x10, x11, x12, s, p, k, b, q, cs, y, z
+1000
+2 - Get all assignments
+        assign                          a                   ;
+                    Select                                                                              a
+1, 2, 7, 8, 9, 10, 12
+1000
+3 - Get all Follows
+
+stmt           s1  ;       stmt        s2;      Select <    s1         ,s2     > such     that         Follows          (  s1       ,       s2  )
+1 2, 2 3, 3 6, 7 8, 8 9, 9 10, 10 11
+1000
+4 - Get all Parent
+
+stmt           s1  ;       stmt        s2;      Select <    s1         ,s2     > such     that         Parent          (  s1       ,       s2  )
+3 4, 3 5, 11 12
+1000
+5 - Get all Uses
+stmt           s  ;       variable        v;      Select <    s         , v     > such     that         Uses          (  s       ,       v  )
+
+1 y, 1 z, 3 x3, 3 y, 3 x5, 5 x5, 6 b, 6 cs, 6 k, 6 p, 6 q, 6 s, 6 x11, 7 s, 7 p, 8 p, 8 k, 8 b, 9 q, 9 p, 9 s, 10 cs, 11 x11
+1000
+6 - Get all Modifies
+stmt           s  ;       variable        v;      Select <    s         , v     > such
+that         Modifies          (  s       ,       v  )
+1 x1, 2 x2, 3 x4, 4 x4, 6 x10, 6 x12, 6 x7, 6 x8, 6 x9, 7 x7, 8 x8, 9 x9, 10 x10, 11 x12, 12 x12
+1000
+7 - With - syn ident
+assign                  a;variable v;Select               a such        that    Uses(   a   ,   v)                with v
+.             varName   =          "p"
+7, 8, 9
+1000
+8 - With - syn syn
+procedure       p       ; call          c    ;      Select  p
+with        p   .           procName        =    c          .                           procName
+second
+1000
+9 - Assign Pattern
+                    assign      a           ;               Select
+        a            pattern        a (                        "x9"           , _         "p"     _)
+9
+1000
+10 - If Pattern
+    if          i;               variable    v         ;    Select  v   pattern          i           (         v        ,
+    _               ,               _               )
+x3, y
+1000
+11 - While Pattern
+while           w                           ; Select
+w           pattern         w   (        "x11"                      ,               _           )
+11
+1000

@@ -1,0 +1,30 @@
+1 - assignment, assignment (blocked by read, returns none)
+assign a;
+Select a such that Affects(a, 3)
+none
+5000
+2 - assignment, assignment (not blocked by read)
+assign a;
+Select a such that Affects(a, 6)
+4
+5000
+3 - assignment, assignment (print does not block, returns valid)
+assign a;
+Select a such that Affects(a, 9)
+7
+5000
+4 - assignment, assignment (print does not block, returns valid)
+assign a;
+Select a such that Affects(a, 12)
+10
+5000
+5 - assignment, assignment (blocked by call)
+assign a;
+Select a such that Affects(a, 15)
+none
+5000
+6 - assignment, assignment (not blocked by call)
+assign a;
+Select a such that Affects(a, 18)
+16
+5000

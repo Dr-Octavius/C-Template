@@ -1,0 +1,49 @@
+procedure first {
+    a = x1;
+    b = x2 + a;
+    print a;
+    while (b <= x4) {
+        b = x5 + a - b;
+        call second;
+        c = x7; }
+    if (x8 > b) then {
+        a = a + x9;
+    } else {
+        b = x10; }
+    c = c - x11;
+    c = x12 % c;
+    call third;
+    c = x14 - a + b;
+    print c;
+}
+
+procedure second {
+    if (x16 > 0) then {
+        if (x17 <= 0) then {
+            c = x18;
+        } else {
+            while (c < 19) {
+                print x20;
+                read a; }}
+    } else {
+        x22 = c + 12;
+        a = x23;
+    }
+    a = x24 - a;
+}
+
+procedure third {
+    x25 = c;
+    call fourth;
+    a = x27 - b;
+}
+
+procedure fourth {
+    while (c > 28) {
+        if (a > b) then {
+            x30 = b;
+        } else {
+            read c; }
+        c = x32 * a - b / c; }
+    print c;
+}

@@ -1,0 +1,33 @@
+procedure procedure1 {
+    read x;
+    read y;
+    read z;
+    x = y + z;
+    a = x * 2;
+    if (cond < 10) then {
+        y = x + 10;
+        z = z * 2;
+        a = z;
+    } else {
+        b = y + z;
+        c = 250;
+    }
+    x = 20;
+    call procedure2;
+    y = 10;
+    z = x + y + z + a + b + c;
+    foo = y + z + b;
+    bar = 10;
+    baz = a + b + z;
+}
+
+procedure procedure2 {
+    x = 50;
+    call procedure3;
+}
+
+procedure procedure3 {
+    while (z < 10) {
+        foo = foo * 2;
+    }
+}

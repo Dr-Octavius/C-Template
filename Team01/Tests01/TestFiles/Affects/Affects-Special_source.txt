@@ -1,0 +1,43 @@
+procedure first {
+    a = b + c;
+    read a;
+    c = a + d;
+    d = a + b;
+    read a;
+    f = d + a;
+}
+
+procedure second {
+    a = b + c;
+    print a;
+    c = a + d;
+    d = a + b;
+    read a;
+    t = d;
+}
+
+procedure third {
+    a = b + c;
+    call usea;
+    print a;
+    d = a + b;
+    call usea;
+    t = d;
+}
+
+procedure forth {
+   a = b + c;
+   t = a;
+   call usea;
+   print y;
+   read d;
+   read a;
+   l = t;
+   read p;
+   call usea;
+   r = t;
+}
+
+procedure usea {
+    a = t + u;
+}

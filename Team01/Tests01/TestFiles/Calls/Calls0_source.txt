@@ -1,0 +1,35 @@
+procedure firstProcedure {
+    read x;
+    print x;
+    if (x < 10) then {
+        call secondProcedure;
+    } else {
+        call thirdProcedure;
+    }
+}
+
+procedure secondProcedure {
+    y = y + 1;
+}
+
+procedure thirdProcedure {
+    read n;
+    while (n <= x) {
+        call fourthProcedure;
+    }
+}
+
+procedure fourthProcedure {
+    print foo;
+    read bar;
+    z = z * 10;
+}
+
+procedure fifthProcedure {
+    call fourthProcedure;
+}
+
+procedure notCalled {
+    z = z + 1;
+    print z;
+}

@@ -1,0 +1,19 @@
+procedure p1 {
+    a = 1;
+    while (x < 10) {
+        x = x + 10;
+    }
+    if (x > 0) then {
+        if (y > 1) then {
+            z = 3;
+        } else {
+            read x;
+        }
+    } else {
+        while (y <= 0) {
+            y = x + y + z;
+        }
+    }
+    a = 2 * x + y - z;
+    x = x + y + z + a + b + c;
+}

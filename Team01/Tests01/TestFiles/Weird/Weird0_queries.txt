@@ -1,0 +1,80 @@
+1 - Affects no wildcard - TRUE
+
+Select BOOLEAN such that Affects(3, 3) and Affects(3, 9) and Affects(3, 10) and Affects(3, 10) and Affects(3, 11) and Affects(6, 10) and Affects(6, 11) and Affects(9, 9) and Affects(9, 10) and Affects(9, 11) and Affects(10, 11)
+TRUE
+5000
+2 - Affects no wildcard - FALSE
+
+Select BOOLEAN such that Affects(1, 11)
+FALSE
+5000
+3 - Affects no wildcard - invalid start
+
+Select BOOLEAN such that Affects(7, 11)
+FALSE
+5000
+4 - Affects no wildcard - invalid end
+
+Select BOOLEAN such that Affects(3, 2)
+FALSE
+5000
+5 - Affects one wildcard given start - Affects(3, s)
+stmt s;
+Select s such that Affects(3, s)
+3,9,10,11
+5000
+6 - Affects one wildcard given start - Affects(6, s)
+stmt s;
+Select s such that Affects(6, s)
+10,11
+5000
+7 - Affects one wildcard given start - Affects(9, s)
+stmt s;
+Select s such that Affects(9, s)
+9,10,11
+5000
+8 - Affects one wildcard given start - Affects(10, s)
+stmt s;
+Select s such that Affects(10, s)
+11
+5000
+9 - Affects one wildcard given start - Affects(1, s) - no result
+stmt s;
+Select s such that Affects(1, s)
+none
+5000
+10 - Affects one wildcard given end - Affects(s, 3)
+stmt s;
+Select s such that Affects(s, 3)
+3
+5000
+11 - Affects one wildcard given end - Affects(s, 9)
+stmt s;
+Select s such that Affects(s, 9)
+3,9
+5000
+12 - Affects one wildcard given end - Affects(s, 10)
+stmt s;
+Select s such that Affects(s, 10)
+3,6,9
+5000
+13 - Affects one wildcard given end - Affects(s, 11)
+stmt s;
+Select s such that Affects(s, 11)
+3,6,9,10
+5000
+14 - Affects one wildcard given end - invalid end
+stmt s;
+Select s such that Affects(s, 7)
+none
+5000
+15 - Affects one wildcard given end - Affects(s, 6) - no result
+stmt s;
+Select s such that Affects(s, 6)
+none
+5000
+16 - Affects two wildcards
+stmt s1, s2;
+Select <s1, s2> such that Affects(s1, s2)
+3 3, 3 9, 3 10, 3 11, 6 10, 6 11, 9 9, 9 10, 9 11, 10 11
+5000

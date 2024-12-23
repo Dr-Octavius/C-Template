@@ -1,0 +1,39 @@
+@startuml QPSValidator
+
+class MainQueryProcessor {
+    {static} +processQuery(queryString : String)
+}
+
+class QueryValidator {
+    -queryString : String
+    -clauseTypes : Enum[]
+    +QueryValidator(queryString : String)
+    +validateQuery() : Enum[]
+    -splitClauses() : QueryClauseValidator[]
+}
+
+class QueryClauseValidator {
+    -clauseString : String
+    +QueryClauseValidator(clauseString : String)
+    +validateClause() : Enum
+}
+
+class QuerySubClauseValidator {
+    -subClauseString : String
+    +QuerySubClauseValidator(subClauseString : String)
+    +validateSubClause() : bool
+}
+
+class SyntaxError {
+}
+
+MainQueryProcessor --> QueryValidator : creates
+QueryValidator --> QueryClauseValidator : creates
+QueryValidator -[hidden]-> QuerySubClauseValidator
+QueryClauseValidator --> QuerySubClauseValidator : creates
+QueryClauseValidator --> QueryValidator : returns
+QuerySubClauseValidator --> QueryClauseValidator : returns
+QueryClauseValidator .up.> SyntaxError : throws
+QuerySubClauseValidator .up.> SyntaxError : throws
+
+@enduml
